@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Stock Predictor</title>
+    <script>
+        async function fetchPrediction() {
+            const res = await fetch('/predict');
+            const data = await res.json();
+            document.getElementById('output').innerHTML = `
+                <h2>${data.symbol} Prediction</h2>
+                <p>Last Price: $${data.last_price}</p>
+                <p>Predicted Next Price: <strong>$${data.predicted_price}</strong></p>
+            `;
+        }
+    </script>
+</head>
+<body onload="fetchPrediction()">
+    <h1>Cracking the Market Code</h1>
+    <div id="output">Loading...</div>
+</body>
+</html>
